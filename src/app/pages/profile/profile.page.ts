@@ -20,7 +20,8 @@ export class ProfilePage {
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera
     });
-
+    var imageUrl = image.webPath;
     this.profilePhoto = image.dataUrl!;
   }
 }
+
