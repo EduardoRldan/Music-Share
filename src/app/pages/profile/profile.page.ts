@@ -1,7 +1,4 @@
-// src/app/profile/profile.page.ts
-
 import { Component } from '@angular/core';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-profile',
@@ -9,19 +6,18 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage {
-  profilePhoto: string = ''; // Inicializar con un valor por defecto
+  userProfile = {
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+    username: '',
+    bio: '',
+    location: ''
+  };
 
-  constructor() {}
+  constructor() { }
 
-  async takePhoto() {
-    const image = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: false,
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera
-    });
-    var imageUrl = image.webPath;
-    this.profilePhoto = image.dataUrl!;
+  saveProfile() {
+    // Logic to save the user profile goes here
+    console.log('Profile saved', this.userProfile);
   }
 }
-

@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.page.html',
   styleUrls: ['./explore.page.scss'],
 })
-export class ExplorePage implements OnInit {
-
+export class ExplorePage {
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

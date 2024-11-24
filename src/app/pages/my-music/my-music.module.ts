@@ -6,14 +6,12 @@ import { IonicModule } from '@ionic/angular';
 import { MyMusicPageRoutingModule } from './my-music-routing.module';
 import { MyMusicPage } from './my-music.page';
 
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyMusicPageRoutingModule,
-
+    MyMusicPageRoutingModule
   ],
   declarations: [MyMusicPage]
 })

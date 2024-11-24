@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-menu contentId="main-content">
+  <ion-menu contentId="main-content" menuId="main-menu" side="start">
     <ion-header>
       <ion-toolbar color="tertiary">
         <ion-title>Menu</ion-title>
@@ -41,13 +41,32 @@
     <ion-header collapse="condense">
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
+          <ion-menu-button menu="main-menu"></ion-menu-button>
         </ion-buttons>
         <ion-title size="large">My Music</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
       <!-- Content for My Music page -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>My Favorite Songs</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- Example content -->
+          <ion-list>
+            <ion-item>
+              <ion-label>Song 1</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Song 2</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Song 3</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </div>
 </ion-content>
