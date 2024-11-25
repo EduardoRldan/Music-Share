@@ -8,59 +8,36 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar color="tertiary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-list>
-        <ion-item routerLink="/home">
-          <ion-icon slot="start" name="home-outline"></ion-icon>
-          <ion-label>Home</ion-label>
-        </ion-item>
-        <ion-item routerLink="/explore">
-          <ion-icon slot="start" name="compass-outline"></ion-icon>
-          <ion-label>Explore</ion-label>
-        </ion-item>
-        <ion-item routerLink="/login">
-          <ion-icon slot="start" name="log-in-outline"></ion-icon>
-          <ion-label>Login</ion-label>
-        </ion-item>
-        <ion-item routerLink="/my-music">
-          <ion-icon slot="start" name="musical-notes-outline"></ion-icon>
-          <ion-label>My Music</ion-label> <!-- Corregido aquí -->
-        </ion-item>
-        <ion-item routerLink="/profile">
-          <ion-icon slot="start" name="person-outline"></ion-icon>
-          <ion-label>Profile</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+      <ion-text color="danger" *ngIf="email?.errors?.['required']">Email is required.</ion-text>
+      <ion-text color="danger" *ngIf="email?.errors?.['email']">Enter a valid email.</ion-text>
+    </div>
 
-  <div class="ion-page" id="main-content">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title size="large">Register</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <form (ngSubmit)="onRegister()">
-        <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
-        </ion-item>
-        <ion-button expand="full" type="submit">Register</ion-button>
-      </form>
-    </ion-content>
-  </div>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+      <ion-text color="danger" *ngIf="password?.errors?.['required']">Password is required.</ion-text>
+      <ion-text color="danger" *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.</ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" formControlName="confirmPassword"></ion-input>
+    </ion-item>
+    <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
+      <ion-text color="danger" *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required.</ion-text>
+    </div>
+    <div *ngIf="registerForm?.errors?.['mismatch'] && (confirmPassword?.dirty || confirmPassword?.touched)">
+      <ion-text color="danger">Passwords do not match.</ion-text>
+    </div>
+
+    <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Register</ion-button>
+  </form>
 </ion-content>

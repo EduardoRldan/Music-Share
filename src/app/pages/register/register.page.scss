@@ -1,0 +1,40 @@
+ion-content {
+    --background: #f8f9fa;
+  
+    ion-toolbar {
+      --background: #007bff;
+      --color: #fff;
+    }
+  
+    ion-title {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+  
+    form {
+      ion-item {
+        --highlight-color-focused: #007bff;
+  
+        ion-label {
+          color: #007bff;
+        }
+  
+        ion-input {
+          color: #000;
+        }
+      }
+  
+      ion-button {
+        --background: #007bff;
+        --border-radius: 8px;
+        margin-top: 20px;
+      }
+  
+      ion-note {
+        margin-left: 16px;
+        margin-top: -10px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
