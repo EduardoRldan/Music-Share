@@ -1,0 +1,7 @@
+{
+  "name": "music-share",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
