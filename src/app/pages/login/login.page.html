@@ -1,0 +1,15 @@
+<!-- src/app/pages/login/login.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!isAuthenticated; else loggedIn">
+    <ion-button (click)="login()">Login</ion-button>
+  </div>
+  <ng-template #loggedIn>
+    <ion-button (click)="logout()">Logout</ion-button>
+  </ng-template>
+</ion-content>
