@@ -1,14 +1,24 @@
 import { defineConfig } from 'vite';
-import { angular } from '@vitejs/plugin-angular';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [angular()],
+  root: 'src',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src/index.html'),
+      },
+    },
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3000', // Ajusta si tienes algún API
+    },
+  },
   optimizeDeps: {
-    exclude: [
-      'ion-app_8.entry.js',
-      'chunk-2TYK2BCW.js',
-      'ion-app_8.entry'
-    ]
-  }
+    exclude: ['ionicons', 'ionic-angular'],
+  },
 });
